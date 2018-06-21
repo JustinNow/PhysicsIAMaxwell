@@ -1,0 +1,10 @@
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell IA.csprojResolveAssemblyReference.cache
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell_IA.Maxwell.resources
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell_IA.Properties.Resources.resources
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell IA.csproj.GenerateResource.Cache
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell IA.csproj.CoreCompileInputs.cache
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\bin\Debug\Maxwell IA.exe.config
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\bin\Debug\Maxwell IA.exe
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\bin\Debug\Maxwell IA.pdb
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell IA.exe
+C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell IA.pdb

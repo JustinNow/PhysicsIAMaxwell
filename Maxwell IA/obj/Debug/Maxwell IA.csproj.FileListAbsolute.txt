@@ -8,3 +8,13 @@ C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\bin\Debug\Maxwell
 C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\bin\Debug\Maxwell IA.pdb
 C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell IA.exe
 C:\Users\jman8\OneDrive\Documents\GitHub\Maxwell IA\Maxwell IA\obj\Debug\Maxwell IA.pdb
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\bin\Debug\Maxwell IA.exe.config
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\bin\Debug\Maxwell IA.exe
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\bin\Debug\Maxwell IA.pdb
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.csprojResolveAssemblyReference.cache
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell_IA.Maxwell.resources
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell_IA.Properties.Resources.resources
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.csproj.GenerateResource.Cache
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.csproj.CoreCompileInputs.cache
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.exe
+C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.pdb

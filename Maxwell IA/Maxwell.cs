@@ -23,13 +23,14 @@ namespace Maxwell_IA
     public partial class Maxwell : System.Windows.Forms.Form
     {
         Random rnd = new Random();
-        static float mass = 6.64424f*(float)Math.Pow(10,-27);
         static float gasConst = 2077;
         static int aop = 0;
+        static float mass = 0;
         static float temp = 0;
         static float avgVel = 0;
         static int maxVel = 0;
         static int amountOfCollide = 0;
+        static float totalMass = 0;
         Particles[] gasp = new Particles[aop];
         WallParticles[] wallp = new WallParticles[aop];
 
@@ -54,14 +55,18 @@ namespace Maxwell_IA
         
         public void Calculate()
         {
+            totalMass = aop * 6.64424f * (float)Math.Pow(10, -27);
+            mass = 6.64424f * (float)Math.Pow(10, -27);
             int vTest = 0;
-            while (vTest<500 && FrequencyCalculate(vTest)>0.0001)
+            float fTest = 0;
+            while (vTest<2 || fTest>(float)0.00001)
             {
-                maxVel = vTest;
-                FrequencyCalculate(vTest);
+                fTest = FrequencyCalculate(vTest);
+                Console.WriteLine(fTest);
                 vTest++;
             }
-            Program.maxwell.maxVelt.Text = FrequencyCalculate(700).ToString();
+            maxVel = vTest;
+            Program.maxwell.maxVelt.Text = maxVel.ToString();
             for (int i = 0; i < aop; i++)
             {
                 gasp[i].vel = rnd.Next(0, maxVel);
@@ -71,7 +76,7 @@ namespace Maxwell_IA
 
         public float FrequencyCalculate(float v)
         {
-            float velFreq = ((float)Math.Pow(VelocityProbability(mass, gasConst), ((float)(3/2))))*((float)Math.Pow((float)Math.E, ((VelocityProbability(mass, gasConst))*(float)Math.Pow(v,2))));
+            float velFreq = (((float)Math.Pow(VelocityProbability(mass, gasConst), ((float)(3/2))))*((((float)Math.Pow((float)Math.E, ((VelocityProbability(mass, gasConst))))))*(float)Math.Pow(v,2)*(float)Math.PI));
             return velFreq;
         }
 
@@ -169,6 +174,7 @@ namespace Maxwell_IA
                 Calculate();
                 Program.maxwell.calc.Enabled = false;
                 Program.maxwell.startMaxwell.Enabled = true;
+                Program.maxwell.tempn.Enabled = false;
             }
         }
     }

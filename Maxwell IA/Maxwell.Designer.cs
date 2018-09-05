@@ -52,7 +52,7 @@
             this.aopn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.aopn.Location = new System.Drawing.Point(116, 12);
             this.aopn.Maximum = new decimal(new int[] {
-            10000,
+            100000,
             0,
             0,
             0});
@@ -85,6 +85,11 @@
             // tempn
             // 
             this.tempn.Location = new System.Drawing.Point(287, 12);
+            this.tempn.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.tempn.Name = "tempn";
             this.tempn.Size = new System.Drawing.Size(92, 20);
             this.tempn.TabIndex = 3;

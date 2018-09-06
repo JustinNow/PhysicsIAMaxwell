@@ -144,6 +144,7 @@
             this.allText.TabIndex = 13;
             this.allText.UseCompatibleStateImageBehavior = false;
             this.allText.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.allText_ColumnWidthChanging);
+            this.allText.SelectedIndexChanged += new System.EventHandler(this.allText_SelectedIndexChanged);
             // 
             // calc
             // 

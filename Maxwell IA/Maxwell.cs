@@ -47,19 +47,19 @@ namespace Maxwell_IA
         public float VelocityProbability(float m, float r)
         {
             //Boltzmann Constant r= Gas Constant
-            float k = r / ((float)(6.02214086) * (float)Math.Pow(10, 23));
+            float k = ((float)Math.Pow(10, -23) * (float)1.3807);
             //Distribution Function
-            float dist = m / (2 * (float)Math.PI * k * temp);
+            float dist = (m / (2 * (float)Math.PI * k * temp));
             return dist;
         }
         
         public void Calculate()
         {
             totalMass = aop * 6.64424f * (float)Math.Pow(10, -27);
-            mass = 6.64424f * (float)Math.Pow(10, -27);
+            mass = ((float)6.6464764 * (float)Math.Pow(10, -27));
             int vTest = 0;
             float fTest = 0;
-            while (vTest<2 || fTest>(float)0.00001)
+            while (vTest<500 || fTest>(float)0.00000001)
             {
                 fTest = FrequencyCalculate(vTest);
                 Console.WriteLine(fTest);
@@ -67,16 +67,19 @@ namespace Maxwell_IA
             }
             maxVel = vTest;
             Program.maxwell.maxVelt.Text = maxVel.ToString();
-            for (int i = 0; i < aop; i++)
+            vTest = 1;
+            while(vTest <= maxVel)
             {
-                gasp[i].vel = rnd.Next(0, maxVel);
-                wallp[i].vel = avgVel;
+                while (gasp[vTest].vel == 0)
+                {
+
+                }
             }
         }
 
         public float FrequencyCalculate(float v)
         {
-            float velFreq = (((float)Math.Pow(VelocityProbability(mass, gasConst), ((float)(3/2))))*((((float)Math.Pow((float)Math.E, ((VelocityProbability(mass, gasConst))))))*(float)Math.Pow(v,2)*(float)Math.PI));
+            float velFreq = (((float)Math.Pow(VelocityProbability(mass, gasConst), ((float)(3/2))))*((((float)Math.Exp((((-1*(((VelocityProbability(mass, gasConst))))))*(float)Math.Pow(v,2)*(float)Math.PI))))));
             return velFreq;
         }
 
@@ -176,6 +179,11 @@ namespace Maxwell_IA
                 Program.maxwell.startMaxwell.Enabled = true;
                 Program.maxwell.tempn.Enabled = false;
             }
+        }
+
+        private void allText_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

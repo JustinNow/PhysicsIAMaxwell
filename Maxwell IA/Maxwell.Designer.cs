@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Maxwell));
             this.aopn = new System.Windows.Forms.NumericUpDown();
             this.aopl = new System.Windows.Forms.Label();
@@ -44,8 +45,9 @@
             this.debug = new System.Windows.Forms.Label();
             this.maxVelt = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.aoi = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.aopn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -133,7 +135,7 @@
             // startMaxwell
             // 
             this.startMaxwell.Enabled = false;
-            this.startMaxwell.Location = new System.Drawing.Point(12, 339);
+            this.startMaxwell.Location = new System.Drawing.Point(21, 514);
             this.startMaxwell.Name = "startMaxwell";
             this.startMaxwell.Size = new System.Drawing.Size(75, 23);
             this.startMaxwell.TabIndex = 12;
@@ -145,9 +147,9 @@
             // 
             this.allText.GridLines = true;
             this.allText.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.allText.Location = new System.Drawing.Point(335, 45);
+            this.allText.Location = new System.Drawing.Point(579, 45);
             this.allText.Name = "allText";
-            this.allText.Size = new System.Drawing.Size(406, 256);
+            this.allText.Size = new System.Drawing.Size(428, 417);
             this.allText.TabIndex = 13;
             this.allText.UseCompatibleStateImageBehavior = false;
             this.allText.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.allText_ColumnWidthChanging);
@@ -155,7 +157,7 @@
             // 
             // calc
             // 
-            this.calc.Location = new System.Drawing.Point(12, 310);
+            this.calc.Location = new System.Drawing.Point(21, 485);
             this.calc.Name = "calc";
             this.calc.Size = new System.Drawing.Size(75, 23);
             this.calc.TabIndex = 14;
@@ -183,44 +185,60 @@
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.DataSource = this.chart1.ChartAreas;
             this.chart1.Location = new System.Drawing.Point(15, 45);
             this.chart1.Name = "chart1";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Name = "Series1";
-            this.chart1.Series.Add(series6);
-            this.chart1.Size = new System.Drawing.Size(314, 256);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Series2";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(555, 417);
             this.chart1.TabIndex = 18;
             this.chart1.Text = "mwBolt";
             // 
-            // label4
+            // label5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(445, 339);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "label4";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(102, 519);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Amount Of Iterations:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // label3
+            // aoi
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(403, 339);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "label3";
+            this.aoi.AutoSize = true;
+            this.aoi.Location = new System.Drawing.Point(214, 519);
+            this.aoi.Name = "aoi";
+            this.aoi.Size = new System.Drawing.Size(0, 13);
+            this.aoi.TabIndex = 22;
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(469, 468);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Export to Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Maxwell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 374);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(1019, 546);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.aoi);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.maxVelt);
             this.Controls.Add(this.debug);
@@ -260,8 +278,9 @@
         private System.Windows.Forms.Label debug;
         private System.Windows.Forms.TextBox maxVelt;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label aoi;
+        private System.Windows.Forms.Button button1;
     }
 }
 

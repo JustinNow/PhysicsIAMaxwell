@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Maxwell));
             this.aopn = new System.Windows.Forms.NumericUpDown();
             this.aopl = new System.Windows.Forms.Label();
             this.templ = new System.Windows.Forms.Label();
@@ -40,8 +43,12 @@
             this.calc = new System.Windows.Forms.Button();
             this.debug = new System.Windows.Forms.Label();
             this.maxVelt = new System.Windows.Forms.TextBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.aopn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // aopn
@@ -138,9 +145,9 @@
             // 
             this.allText.GridLines = true;
             this.allText.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.allText.Location = new System.Drawing.Point(335, 94);
+            this.allText.Location = new System.Drawing.Point(335, 45);
             this.allText.Name = "allText";
-            this.allText.Size = new System.Drawing.Size(406, 207);
+            this.allText.Size = new System.Drawing.Size(406, 256);
             this.allText.TabIndex = 13;
             this.allText.UseCompatibleStateImageBehavior = false;
             this.allText.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.allText_ColumnWidthChanging);
@@ -174,11 +181,47 @@
             this.maxVelt.Size = new System.Drawing.Size(92, 20);
             this.maxVelt.TabIndex = 16;
             // 
+            // chart1
+            // 
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            this.chart1.DataSource = this.chart1.ChartAreas;
+            this.chart1.Location = new System.Drawing.Point(15, 45);
+            this.chart1.Name = "chart1";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Name = "Series1";
+            this.chart1.Series.Add(series6);
+            this.chart1.Size = new System.Drawing.Size(314, 256);
+            this.chart1.TabIndex = 18;
+            this.chart1.Text = "mwBolt";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(445, 339);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(403, 339);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "label3";
+            // 
             // Maxwell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 374);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.maxVelt);
             this.Controls.Add(this.debug);
             this.Controls.Add(this.calc);
@@ -191,11 +234,13 @@
             this.Controls.Add(this.templ);
             this.Controls.Add(this.aopl);
             this.Controls.Add(this.aopn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Maxwell";
-            this.Text = "Maxwell Distribution";
+            this.Text = "Xenon Collision Simulation";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.aopn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,6 +259,9 @@
         private System.Windows.Forms.Button calc;
         private System.Windows.Forms.Label debug;
         private System.Windows.Forms.TextBox maxVelt;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }
 

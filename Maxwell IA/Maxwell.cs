@@ -20,6 +20,11 @@ namespace Maxwell_IA
     {
         public float vel;
     }
+    public struct Probabilities
+    {
+        public float prob;
+        public int vel;
+    }
     public partial class Maxwell : System.Windows.Forms.Form
     {
         Random rnd = new Random();
@@ -33,6 +38,7 @@ namespace Maxwell_IA
         static float totalMass = 0;
         Particles[] gasp = new Particles[aop];
         WallParticles[] wallp = new WallParticles[aop];
+        Probabilities[] probs = new Probabilities[0];
 
         public Maxwell()
         {
@@ -49,17 +55,17 @@ namespace Maxwell_IA
             //Boltzmann Constant r= Gas Constant
             float k = ((float)Math.Pow(10, -23) * (float)1.3807);
             //Distribution Function
-            float dist = (m / (2 * (float)Math.PI * k * temp));
+            float dist = (m / (2 * k * temp));
             return dist;
         }
         
         public void Calculate()
         {
             totalMass = aop * 6.64424f * (float)Math.Pow(10, -27);
-            mass = ((float)6.6464764 * (float)Math.Pow(10, -27));
+            mass = ((float)2.1801714 * (float)Math.Pow(10, -25));
             int vTest = 0;
             float fTest = 0;
-            while (vTest<500 || fTest>(float)0.00000001)
+            while (vTest<250 || fTest>(float)0.0001)
             {
                 fTest = FrequencyCalculate(vTest);
                 Console.WriteLine(fTest);
@@ -68,18 +74,60 @@ namespace Maxwell_IA
             maxVel = vTest;
             Program.maxwell.maxVelt.Text = maxVel.ToString();
             vTest = 1;
+            float totalProb = 0;
             while(vTest <= maxVel)
             {
-                while (gasp[vTest].vel == 0)
+                totalProb += (FrequencyCalculate(vTest));
+                vTest++;
+            }
+            vTest = 1;
+            Array.Resize(ref probs, maxVel);
+            while(vTest <= maxVel)
+            {
+                float prob = ((FrequencyCalculate(vTest)/totalProb)*100);
+                probs[vTest-1].prob = prob;
+                probs[vTest-1].vel = vTest;
+                vTest++;
+            }
+            Program.maxwell.label3.Text = totalProb.ToString();
+            Program.maxwell.label4.Text = FrequencyCalculate(250).ToString();
+            Random rn = new Random();
+            for (int i = 0; i < aop; i++)
+            {
+                float rand = rn.Next(0, 1000000000);
+                float proc = (rand /  10000000);
+                float num = 0;
+                int test = 0;
+                while (num < proc)
                 {
-
+                    num += probs[test].prob;
+                    test++;
                 }
+                gasp[i].vel = (test);
+            }
+            Array.Sort(gasp, delegate (Particles gasp1, Particles gasp2)
+            {
+                return gasp1.vel.CompareTo(gasp2.vel);
+            });
+            ListViewItem init = new ListViewItem(new[] { "INITIAL VELOCITIES" });
+            Program.maxwell.allText.Items.Add(init);
+            for (int i = 0; i < aop; i++)
+            {               
+                ListViewItem item = new ListViewItem(new[] { (i + 1).ToString(), gasp[i].vel.ToString(), gasp[i].chanceOfHit.ToString(), gasp[i].doesCollide.ToString() });
+                Program.maxwell.allText.Items.Add(item);
+            }
+            chart1.ChartAreas[0].Axes[0].Title = "Velocity(m/s)";
+            chart1.ChartAreas[0].Axes[1].Title = "Frequency(s/m)";
+            for (int i = 1; i <= maxVel; i++)
+            {
+                chart1.Series[0].Points.AddXY(xValue:i, yValue:(float)(FrequencyCalculate(i)));
             }
         }
 
         public float FrequencyCalculate(float v)
         {
-            float velFreq = (((float)Math.Pow(VelocityProbability(mass, gasConst), ((float)(3/2))))*((((float)Math.Exp((((-1*(((VelocityProbability(mass, gasConst))))))*(float)Math.Pow(v,2)*(float)Math.PI))))));
+            //float velFreq = (((float)Math.Pow(VelocityProbability(mass, gasConst), ((float)(3/2))))*((((float)Math.Exp((((-1*(((VelocityProbability(mass, gasConst))))))*(float)Math.Pow(v,2)*(float)Math.PI))))));
+            float velFreq = (((float)Math.Pow((2/Math.PI),0.5f)*(float)Math.Pow((2*(VelocityProbability(mass, gasConst))),1.5f)*(float)Math.Pow(v,2)*(float)Math.Exp((-1*(VelocityProbability(mass, gasConst))*(float)Math.Pow(v,2)))));
             return velFreq;
         }
 
@@ -108,6 +156,10 @@ namespace Maxwell_IA
                     gasp[i].vel = avgVel;
                 }
             }
+            Array.Sort(gasp, delegate(Particles gasp1, Particles gasp2)
+            {
+                return gasp1.vel.CompareTo(gasp2.vel);
+            });
             float totalVel = 0;
             for (int i = 0; i < aop; i++)
             {
@@ -182,6 +234,11 @@ namespace Maxwell_IA
         }
 
         private void allText_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

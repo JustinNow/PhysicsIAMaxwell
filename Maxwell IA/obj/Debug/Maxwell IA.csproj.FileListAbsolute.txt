@@ -29,3 +29,8 @@ C:\Users\jman8\OneDrive\Documents\GitHub\Physics IA Real\PhysicsIAMaxwell\Maxwel
 C:\Users\jman8\OneDrive\Documents\GitHub\Physics IA Real\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.exe
 C:\Users\jman8\OneDrive\Documents\GitHub\Physics IA Real\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.pdb
 C:\Users\Justin Weaver\Documents\GitHub\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.csproj.ResolveComReference.cache
+C:\Users\jman8\OneDrive\Documents\GitHub\Physics IA Real\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.csproj.ResolveComReference.cache
+C:\Users\jman8\OneDrive\Documents\GitHub\Physics IA Real\PhysicsIAMaxwell\Maxwell IA\bin\Debug\Maxwell IA.exe.manifest
+C:\Users\jman8\OneDrive\Documents\GitHub\Physics IA Real\PhysicsIAMaxwell\Maxwell IA\bin\Debug\Maxwell IA.application
+C:\Users\jman8\OneDrive\Documents\GitHub\Physics IA Real\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.exe.manifest
+C:\Users\jman8\OneDrive\Documents\GitHub\Physics IA Real\PhysicsIAMaxwell\Maxwell IA\obj\Debug\Maxwell IA.application

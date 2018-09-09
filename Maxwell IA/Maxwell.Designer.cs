@@ -37,8 +37,6 @@
             this.templ = new System.Windows.Forms.Label();
             this.tempn = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.AvgVelt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.startMaxwell = new System.Windows.Forms.Button();
             this.allText = new System.Windows.Forms.ListView();
             this.calc = new System.Windows.Forms.Button();
@@ -48,9 +46,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.aoi = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.aopn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // aopn
@@ -86,14 +87,14 @@
             this.templ.AutoSize = true;
             this.templ.Location = new System.Drawing.Point(214, 14);
             this.templ.Name = "templ";
-            this.templ.Size = new System.Drawing.Size(67, 13);
+            this.templ.Size = new System.Drawing.Size(101, 13);
             this.templ.TabIndex = 2;
-            this.templ.Text = "Temperature";
+            this.templ.Text = "Temperature of Gas";
             this.templ.Click += new System.EventHandler(this.label2_Click);
             // 
             // tempn
             // 
-            this.tempn.Location = new System.Drawing.Point(287, 12);
+            this.tempn.Location = new System.Drawing.Point(321, 11);
             this.tempn.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -108,29 +109,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(576, 14);
+            this.label1.Location = new System.Drawing.Point(1061, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Max Velocity";
-            // 
-            // AvgVelt
-            // 
-            this.AvgVelt.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AvgVelt.Location = new System.Drawing.Point(478, 11);
-            this.AvgVelt.Name = "AvgVelt";
-            this.AvgVelt.ReadOnly = true;
-            this.AvgVelt.Size = new System.Drawing.Size(92, 20);
-            this.AvgVelt.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(400, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "New Average";
             // 
             // startMaxwell
             // 
@@ -147,9 +130,9 @@
             // 
             this.allText.GridLines = true;
             this.allText.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.allText.Location = new System.Drawing.Point(579, 45);
+            this.allText.Location = new System.Drawing.Point(669, 38);
             this.allText.Name = "allText";
-            this.allText.Size = new System.Drawing.Size(428, 417);
+            this.allText.Size = new System.Drawing.Size(557, 417);
             this.allText.TabIndex = 13;
             this.allText.UseCompatibleStateImageBehavior = false;
             this.allText.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.allText_ColumnWidthChanging);
@@ -177,7 +160,7 @@
             // maxVelt
             // 
             this.maxVelt.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.maxVelt.Location = new System.Drawing.Point(649, 11);
+            this.maxVelt.Location = new System.Drawing.Point(1134, 11);
             this.maxVelt.Name = "maxVelt";
             this.maxVelt.ReadOnly = true;
             this.maxVelt.Size = new System.Drawing.Size(92, 20);
@@ -198,7 +181,7 @@
             series2.Name = "Series2";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(555, 417);
+            this.chart1.Size = new System.Drawing.Size(620, 417);
             this.chart1.TabIndex = 18;
             this.chart1.Text = "mwBolt";
             // 
@@ -223,7 +206,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(469, 468);
+            this.button1.Location = new System.Drawing.Point(534, 468);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 23);
             this.button1.TabIndex = 23;
@@ -231,11 +214,36 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(434, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Temperature of Wall";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(543, 12);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(92, 20);
+            this.numericUpDown1.TabIndex = 25;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
             // Maxwell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 546);
+            this.ClientSize = new System.Drawing.Size(1238, 546);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.aoi);
             this.Controls.Add(this.label5);
@@ -245,8 +253,6 @@
             this.Controls.Add(this.calc);
             this.Controls.Add(this.allText);
             this.Controls.Add(this.startMaxwell);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.AvgVelt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tempn);
             this.Controls.Add(this.templ);
@@ -259,6 +265,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.aopn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,8 +277,6 @@
         private System.Windows.Forms.NumericUpDown tempn;
         public System.Windows.Forms.NumericUpDown aopn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox AvgVelt;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button startMaxwell;
         private System.Windows.Forms.ListView allText;
         private System.Windows.Forms.Button calc;
@@ -281,6 +286,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label aoi;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 

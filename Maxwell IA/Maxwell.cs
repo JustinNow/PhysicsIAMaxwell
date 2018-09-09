@@ -32,9 +32,10 @@ namespace Maxwell_IA
         static int aop = 0;
         static float massG = ((float)2.1801714 * (float)Math.Pow(10, -25));
         static float massW = ((float)3.1588432 * (float)Math.Pow(10, -25));
-        static float temp = 0;
+        static float tempG = 0;
+        static float tempW = 0;
         static float avgVel = 0;
-        static int maxVel = 0;
+        static float maxVel = 0;
         static int amountOfCollide = 0;
         Particles[] gasp = new Particles[aop];
         WallParticles[] wallp = new WallParticles[aop];
@@ -46,6 +47,7 @@ namespace Maxwell_IA
             allText.View = View.Details;
             allText.Columns.Add("Particle Number", -2);
             allText.Columns.Add("Particle Speed in m/s", -2);
+            allText.Columns.Add("Wall Particle Speed in m/s", -2);
             allText.Columns.Add("Particle Hit Chance", -2);
             allText.Columns.Add("Does Particle Hit", -2);
         }
@@ -61,30 +63,45 @@ namespace Maxwell_IA
         
         public void Calculate()
         {
-            int vTest = 0;
-            float fTest = 0;
-            while (vTest<250 || fTest>(float)0.0001)
+            int vTestG = 0;
+            int vTestW = 0;
+            float fTestG = 0;
+            while (vTestG<250 || fTestG>(float)0.0001)
             {
-                fTest = FrequencyCalculate(vTest, massG, temp);
-                vTest++;
+                fTestG = FrequencyCalculate(vTestG, massG, tempG);
+                vTestG++;
             }
-            maxVel = vTest;
+            float fTestW = 0;
+            while (vTestW < 250 || fTestW > (float)0.0001)
+            {
+                fTestW = FrequencyCalculate(vTestW, massW, tempW);
+                vTestW++;
+            }
+            if (vTestG < vTestW)
+            {
+                maxVel = vTestW;
+            }
+            else
+            {
+                maxVel = vTestG;
+            }
             Program.maxwell.maxVelt.Text = maxVel.ToString();
-            vTest = 1;
-            float totalProb = 0;
-            while(vTest <= maxVel)
+            vTestG = 1;
+            float totalProbG = 0;
+            float totalProbW = 0;
+            while(vTestG <= maxVel)
             {
-                totalProb += (FrequencyCalculate(vTest, massG, temp));
-                vTest++;
+                totalProbG += (FrequencyCalculate(vTestG, massG, tempG));
+                vTestG++;
             }
-            vTest = 1;
+            vTestG = 1;
             Array.Resize(ref probs, (int)maxVel);
-            while(vTest <= maxVel)
+            while(vTestG <= maxVel)
             {
-                float prob = ((FrequencyCalculate(vTest, massG, temp)/totalProb)*100);
-                probs[vTest-1].prob = prob;
-                probs[vTest-1].vel = vTest;
-                vTest++;
+                float prob = ((FrequencyCalculate(vTestG, massG, tempG)/totalProbG)*100);
+                probs[vTestG-1].prob = prob;
+                probs[vTestG-1].vel = vTestG;
+                vTestG++;
             }
             Random rn = new Random();
             for (int i = 0; i < aop; i++)
@@ -100,15 +117,48 @@ namespace Maxwell_IA
                 }
                 gasp[i].vel = (test);
             }
+           vTestW = 1;
+            while (vTestW <= maxVel)
+            {
+                totalProbW += (FrequencyCalculate(vTestW, massW, tempW));
+                vTestW++;
+            }
+            vTestW = 1;
+            while (vTestW <= maxVel)
+            {
+                float prob = ((FrequencyCalculate(vTestW, massW, tempW) / totalProbW) * 100);
+                probs[vTestW - 1].prob = prob;
+                probs[vTestW - 1].vel = vTestG;
+                vTestW++;
+            }
+            for (int i = 0; i < aop; i++)
+            {
+                float rand = rn.Next(0, 1000000000);
+                float proc = (rand / 10000000);
+                float num = 0;
+                int test = 0;
+                while (num < proc)
+                {
+                    num += probs[test].prob;
+                    test++;
+                }
+                wallp[i].vel = (test);
+            }
             Array.Sort(gasp, delegate (Particles gasp1, Particles gasp2)
             {
                 return gasp1.vel.CompareTo(gasp2.vel);
             });
+
+            Array.Sort(wallp, delegate (WallParticles wallp1, WallParticles wallp2)
+            {
+                return wallp1.vel.CompareTo(wallp2.vel);
+            });
+
             ListViewItem init = new ListViewItem(new[] { "INITIAL VELOCITIES" });
             Program.maxwell.allText.Items.Add(init);
             for (int i = 0; i < aop; i++)
             {               
-                ListViewItem item = new ListViewItem(new[] { (i + 1).ToString(), gasp[i].vel.ToString(), gasp[i].chanceOfHit.ToString(), gasp[i].doesCollide.ToString() });
+                ListViewItem item = new ListViewItem(new[] { (i + 1).ToString(), gasp[i].vel.ToString(), wallp[i].vel.ToString(), gasp[i].chanceOfHit.ToString(), gasp[i].doesCollide.ToString() });
                 Program.maxwell.allText.Items.Add(item);
             }
             chart1.ChartAreas[0].AxisX.Maximum = maxVel;
@@ -116,13 +166,14 @@ namespace Maxwell_IA
             chart1.ChartAreas[0].Axes[1].Title = "Frequency(s/m)";
             for (int i = 1; i <= maxVel; i++)
             {
-                chart1.Series[0].Points.AddXY(xValue:i, yValue:(float)(FrequencyCalculate(i, massG, temp)));
+                chart1.Series[0].Points.AddXY(xValue:i, yValue:(float)(FrequencyCalculate(i, massG, tempG)));
             }
             for (int i = 1; i <= maxVel; i++)
             {
-                chart1.Series[1].Points.AddXY(xValue: i, yValue: (float)(FrequencyCalculate(i, massW, temp)));
+                chart1.Series[1].Points.AddXY(xValue: i, yValue: (float)(FrequencyCalculate(i, massW, tempW)));
             }
             this.aopn.Enabled = false;
+            this.numericUpDown1.Enabled = false;
         }
 
         public float FrequencyCalculate(float v, float m, float t)
@@ -134,27 +185,36 @@ namespace Maxwell_IA
         
         public void Collide()
         {
-            for (int i = 0; i < aop; i++)
-            {
-                wallp[i].vel = 100;
-            }
             avgVel = 100;
             int aoi = 0;
             float oldAvg = 1000;
-            while (avgVel != oldAvg)
+            float wallpTotal = 0;
+            float gaspTotal = 1;
+            for (int i = 0; i < aop; i++)
+            {
+                wallpTotal += wallp[i].vel;
+            }
+            while (gaspTotal != wallpTotal)
             {
                 Array.Sort(gasp, delegate (Particles gasp1, Particles gasp2)
                 {
                     return gasp1.vel.CompareTo(gasp2.vel);
                 });
-                //maxVel = (int)gasp[aop - 1].vel;
+                if (gasp[aop - 1].vel < wallp[aop-1].vel)
+                {
+                    maxVel = wallp[aop - 1].vel;
+                }
+                else
+                {
+                    maxVel = gasp[aop - 1].vel;
+                }
                 aoi++;
                 oldAvg = avgVel;
                 amountOfCollide++;
-                ListViewItem trial = new ListViewItem(new[] { "TRIAL " + amountOfCollide, "TRIAL " + amountOfCollide, "TRIAL " + amountOfCollide, "TRIAL " + amountOfCollide });
-                Program.maxwell.allText.Items.Add(trial);               
+                ListViewItem trial = new ListViewItem(new[] { "TRIAL " + amountOfCollide, "TRIAL " + amountOfCollide, "TRIAL " + amountOfCollide, "TRIAL " + amountOfCollide, "TRIAL " + amountOfCollide });
+                Program.maxwell.allText.Items.Add(trial);
                 for (int i = 0; i < aop; i++)
-                {             
+                {
                     float probability = ((float)gasp[i].vel / (float)maxVel);
                     gasp[i].chanceOfHit = (int)(probability * (float)100);
                     int rand = rnd.Next(1, 101);
@@ -168,28 +228,21 @@ namespace Maxwell_IA
                     }
                     if (gasp[i].doesCollide == true)
                     {
-                        float storeVel = gasp[i].vel;
-                        wallp[i].vel = storeVel;
-                        gasp[i].vel = avgVel;
+                        gasp[i].vel = wallp[i].vel;
                     }
                 }
-                float totalVel = 0;
-                for (int i = 0; i < aop; i++)
-                {
-                    totalVel += wallp[i].vel;
-                }
-                avgVel = (float)totalVel / (float)aop;
-                for (int i = 0; i < aop; i++)
-                {
-                    wallp[i].vel = avgVel;
-                }
+
                 Program.maxwell.aopn.Enabled = false;
                 Program.maxwell.tempn.Enabled = false;
-                Program.maxwell.AvgVelt.Text = avgVel.ToString();
                 for (int i = 0; i < aop; i++)
                 {
-                    ListViewItem item = new ListViewItem(new[] { (i + 1).ToString(), gasp[i].vel.ToString(), gasp[i].chanceOfHit.ToString(), gasp[i].doesCollide.ToString() });
+                    ListViewItem item = new ListViewItem(new[] { (i + 1).ToString(), gasp[i].vel.ToString(), wallp[i].vel.ToString(), gasp[i].chanceOfHit.ToString(), gasp[i].doesCollide.ToString() });
                     Program.maxwell.allText.Items.Add(item);
+                }
+                gaspTotal = 0;
+                for (int i = 0; i < aop; i++)
+                {
+                    gaspTotal += gasp[i].vel;
                 }
             }
             Program.maxwell.aoi.Text = aoi.ToString();
@@ -213,7 +266,7 @@ namespace Maxwell_IA
 
         private void temp_ValueChanged(object sender, EventArgs e)
         {
-            temp = (int)Program.maxwell.tempn.Value;
+            tempG = (float)Program.maxwell.tempn.Value;
         }
 
         private void startMaxwell_Click(object sender, EventArgs e)
@@ -236,7 +289,7 @@ namespace Maxwell_IA
 
         private void calc_Click(object sender, EventArgs e)
         {
-            if (aop == 0 ||temp == 0)
+            if (aop == 0 ||tempG == 0 || tempW == 0)
             {
                 Program.maxwell.debug.Text = "No numbers can be 0!";
             }
@@ -283,6 +336,11 @@ namespace Maxwell_IA
                 }
                 Rows++; 
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            tempW = (float)numericUpDown1.Value;
         }
     }
 }

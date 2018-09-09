@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Maxwell IA.exe" version="1.0.0.0" publicKeyToken="70a0b09f1893d07a" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Maxwell IA" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Maxwell IA.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maxwell IA.exe" size="40416">
+      <assemblyIdentity name="Maxwell IA" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>1Ym9ztp/mF2b9BAMNNBOqb698HC/SyI6557At5Jenf0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Maxwell IA.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rl5/qDc7Jz+tB+BIbOv9iMGPlRe6YJwrjmU09dnlPcs=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-4E43AD6\jman8" issuerKeyHash="43f739e4efa1409aaf4a38371da274dc3714b82c" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>9BWhxPpZd6GdSArJCGFWycEs5QmpuQ/aQMyrEGSKG6k=</DigestValue></Reference></SignedInfo><SignatureValue>S+i2X2bukmy6nwEJhBdMCOaazQKJMbza0PIVRQ++Z8mldv6rSHfu5i/NQPPhBekiF0vyPEchnuDvzcgtSF640Vl5KEesqAJ6ymu+AgvhX4OblZrQoMnUplFFGyl/93jUB1dhjtNlRXRaN14t9icWnIu+eh9Lybp6GJqX4Sx+QVI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>y4VfQsoPAEHJenVurMCUZFRjOXA4vzMX0msbzndr2ceLU7gwzxg45ahhpwaByihy3yXLPPCVe7YbHEMLNsWiQv/1NdyHU4rDYfD1Ql+t2H7hkEOijnZwaCTni8/GiYAKROWGLglHwBo5SE/FJxFFG2d7ebJyXWet7OkBjQhQXHE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="a91b8a6410abcc40da0fb9a909e52cc1c9566108c90a489da17759fac4a115f4" Description="" Url=""><as:assemblyIdentity name="Maxwell IA.exe" version="1.0.0.0" publicKeyToken="70a0b09f1893d07a" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-4E43AD6\jman8</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>zFPhjst0btCo13otisonWyg4U8WsFHXL5npf6WyFuSU=</DigestValue></Reference></SignedInfo><SignatureValue>jJKP4cSBn7h8I1wlH/NVcFBazJ3sTcutgUzGB2VXqo9Ps6s5VzHy3nRggp124J5UXxr9bAFxO1XgOfDm3Q5QPCVOoocw5t9gaktjHI4Ss0ai/2ZIrgE+Mcr5QhTR2H3oo3VZii5EIj09+1cBxPFW4+oQM9OWFGy5LjUJO5YVpI0=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>y4VfQsoPAEHJenVurMCUZFRjOXA4vzMX0msbzndr2ceLU7gwzxg45ahhpwaByihy3yXLPPCVe7YbHEMLNsWiQv/1NdyHU4rDYfD1Ql+t2H7hkEOijnZwaCTni8/GiYAKROWGLglHwBo5SE/FJxFFG2d7ebJyXWet7OkBjQhQXHE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQdfYKZMX8sp5PJWC2bSpzRTANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtADQARQA0ADMAQQBEADYAXABqAG0AYQBuADgwHhcNMTgwOTA5MTk1NzUzWhcNMTkwOTEwMDE1NzUzWjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtADQARQA0ADMAQQBEADYAXABqAG0AYQBuADgwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMuFX0LKDwBByXp1bqzAlGRUYzlwOL8zF9JrG853a9nHi1O4MM8YOOWoYacGgcooct8lyzzwlXu2GxxDCzbFokL/9TXch1OKw2Hw9UJfrdh+4ZBDoo52cGgk54vPxomACkTlhi4JR8AaOUhPxScRRRtne3mycl1nrezpAY0IUFxxAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAsEf+e6VPwkheNi8OnboQMy3RcC6je3vQdXKQYj5pK/NQYmzvjVpg7PvPh0Q1Lk08DZdDHZide3XSan9Wi0mxPWBWthqs1rXpuLHO6yr1A1en/f9bxaL6DHJSAuYBXtTD/JQV05oiQ+eWGboOLLBaFcmAYylop21M0dOsujkzF9w=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
